@@ -8,7 +8,7 @@ const ExploreMenu = () => {
 
 
     return (
-        <div className="mb-20">
+        <div className="mb-32">
             <div className="mb-5">
                 <h1 className="text-2xl font-medium text-[#ec2d01]">Explore our menu</h1>
                 <p className="w-full md:w-[70%] lg:w-[70%] opacity-70">Choose from a diverse menu featuring a delectable array of dishes. Our mission is to satisfy your cravings and elevate your dining experience, one delicious meal at a time.</p>
