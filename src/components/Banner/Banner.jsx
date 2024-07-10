@@ -7,7 +7,7 @@ const Banner = () => {
                 <p className="text-xl opacity-70">Order dishes from favorite restaurants near you.</p>
                 
                 <form className="mt-10 flex w-full md:w-[80%] lg:w-[80%]">
-                    <input type="text" className="outline-none px-4 py-4 border border-[#ec2d01] rounded-l w-full" placeholder="Enter food name" required />
+                    <input type="text" className="bg-white outline-none px-4 py-4 border border-[#ec2d01] rounded-l w-full" placeholder="Enter food name" required />
                     <button className="bg-[#ec2d01] text-white text-xs px-2 w-32 rounded-r" type="submit">Find Food</button>
                 </form>
             </div>

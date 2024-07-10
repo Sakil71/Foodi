@@ -3,7 +3,7 @@ import { assets } from '../../assets/assets';
 
 const AppDownload = () => {
     return (
-        <div className='my-20 text-center'>
+        <div className='my-20 text-center h-20 md:min-h-screen lg:min-h-screen'>
             <h1 className='text-2xl font-medium'>For better experience download</h1>
             <h1 className='text-4xl font-medium'><span className='text-[#ec2d01]'>foodi</span> app</h1>
             <div className='flex justify-center gap-4 mt-5'>

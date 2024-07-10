@@ -1,15 +1,17 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ImCross } from "react-icons/im";
 import { FaBars } from "react-icons/fa";
+import { FoodiContext } from "../../contexts/FoodiProvider";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
+    const { setShowLogin, currState, getTotalCartAmount } = useContext(FoodiContext);
 
     return (
         <div className="flex justify-between items-center mb-10 p-5 bg-black text-white">
-            <h1 className="text-4xl font-bold text-[#f53535]">foodi</h1>
+            <Link to={'/'}><h1 className="text-4xl font-bold text-[#f53535]">foodi</h1></Link>
 
             <div
                 onClick={() => setOpen(false)}
@@ -24,22 +26,24 @@ const Navbar = () => {
 
             <div className="flex items-center gap-8">
                 <div className="relative">
-                    <FaCartShopping className="text-2xl"></FaCartShopping>
-                    <div className="absolute top-[-8px] right-[-5px]">
+                    <NavLink to={'cart'} className={({ isActive }) => isActive ? "text-gray-400" : ""}>
+                        <FaCartShopping className="text-2xl"></FaCartShopping>
+                    </NavLink>
+                    <div className={getTotalCartAmount() === 0 ? "hidden" : "absolute top-[-8px] right-[-5px]"}>
                         <p className="w-2 h-2 bg-[#ec2d01] rounded-full"></p>
                     </div>
                 </div>
                 <div>
-                    <button className="text-xs px-4 py-2 hover:border hover:border-[#ec2d01] hover:bg-black rounded bg-[#ec2d01] hover:text-white">Sign Up</button>
+                    <button onClick={() => setShowLogin(true)} className="text-xs px-4 py-2 hover:border hover:border-[#ec2d01] hover:bg-black rounded bg-[#ec2d01] hover:text-white">{currState}</button>
                 </div>
             </div>
 
-            <div onClick={() => setOpen(!open)} className="cursor-pointer lg:hidden md:hidden">
+            <div onClick={() => setOpen(!open)} className="cursor-pointer lg:hidden md:hidden p-2">
                 {
                     open ?
                         <ImCross></ImCross>
                         :
-                        <FaBars></FaBars>
+                        <FaBars className="text-xl"></FaBars>
                 }
             </div>
         </div>
