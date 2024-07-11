@@ -3,7 +3,7 @@ import { FoodiContext } from '../../contexts/FoodiProvider';
 import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
-    const { cartItems, food_list, removeToCart, getTotalCartAmount} = useContext(FoodiContext);
+    const { cartItems, food_list, removeToCart, getTotalCartAmount, url} = useContext(FoodiContext);
 
     const navigate = useNavigate();
 
@@ -28,7 +28,7 @@ const Cart = () => {
                                     return <tr key={index}>
                                         <td>
                                             <div className='flex gap-2 items-center'>
-                                                <img className='w-12 h-12 md:w-16 lg:w-16 md:h-16 lg:h-16 rounded-full' src={items?.image} alt="" />
+                                                <img className='w-12 h-12 md:w-16 lg:w-16 md:h-16 lg:h-16 rounded-full' src={url + "/images/" +items?.image} alt="" />
                                                 <div>
                                                     <p className='font-bold'>{items?.name}</p>
                                                     <p className='text-[#ec2d01]'>৳{items?.price}</p>

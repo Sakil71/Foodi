@@ -1,13 +1,24 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
 import { useContext, useState } from "react";
 import { ImCross } from "react-icons/im";
 import { FaBars } from "react-icons/fa";
 import { FoodiContext } from "../../contexts/FoodiProvider";
+import { CgProfile } from "react-icons/cg";
+import { AiOutlineLogout } from "react-icons/ai";
+import { IoBagOutline } from "react-icons/io5";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
-    const { setShowLogin, currState, getTotalCartAmount } = useContext(FoodiContext);
+    const { setShowLogin, currState, getTotalCartAmount, token, setToken } = useContext(FoodiContext);
+
+    const navigate = useNavigate();
+
+    const logout = () => {
+        localStorage.removeItem("token");
+        setToken("");
+        navigate("/");
+    }
 
     return (
         <div className="flex justify-between items-center mb-10 p-5 bg-black text-white">
@@ -34,7 +45,24 @@ const Navbar = () => {
                     </div>
                 </div>
                 <div>
-                    <button onClick={() => setShowLogin(true)} className="text-xs px-4 py-2 hover:border hover:border-[#ec2d01] hover:bg-black rounded bg-[#ec2d01] hover:text-white">{currState}</button>
+                    {
+                        !token ?
+                            <button onClick={() => setShowLogin(true)} className="text-xs px-4 py-2 hover:border hover:border-[#ec2d01] hover:bg-black rounded bg-[#ec2d01] hover:text-white">{currState}</button>
+                            :
+                            <div className="dropdown dropdown-end dropdown-hover">
+                                <div tabIndex={0} role="button" className="">
+                                    <CgProfile className="text-3xl" />
+                                </div>
+                                <ul tabIndex={0} className="dropdown-content menu bg-black text-white rounded-box z-[1] w-52 p-2 shadow mt-5">
+                                    <li>
+                                        <span className="flex items-center"><IoBagOutline className="text-xl"></IoBagOutline> Orders</span>
+                                    </li>
+                                    <li onClick={logout}>
+                                        <span className="flex items-center"><AiOutlineLogout className="text-xl text-red-700"></AiOutlineLogout> Logout</span>
+                                    </li>
+                                </ul>
+                            </div>
+                    }
                 </div>
             </div>
 

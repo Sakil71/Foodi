@@ -5,14 +5,14 @@ import { FoodiContext } from '../../contexts/FoodiProvider';
 
 const FoodItem = ({ item }) => {
     const { _id, name, image, price, description } = item;
-    const { cartItems, addToCart, removeToCart } = useContext(FoodiContext);
+    const { cartItems, addToCart, removeToCart, url } = useContext(FoodiContext);
 
     return (
         <div className='relative'>
             {/* Card */}
-            <div className="card lg:card-side bg-[#f3f0ef] shadow-xl mt-5 hover:bg-[#e5dcda] transition duration-0 hover:duration-700">
+            <div className="card h-48 lg:card-side bg-[#f3f0ef] shadow-xl mt-5 hover:bg-[#e5dcda] transition duration-0 hover:duration-700">
                 <div>
-                    <img className='rounded-t-lg lg:rounded-l-lg h-64 md:h-full lg:h-full w-full md:w-60' src={image} alt={name} />
+                    <img className='rounded-t-lg lg:rounded-l-lg h-64 md:h-full lg:h-full w-full md:w-60' src={url + "/images/" + image} alt={name} />
                 </div>
                 <div className="card-body w-full">
                     <h2 className="card-title">{name}</h2>
