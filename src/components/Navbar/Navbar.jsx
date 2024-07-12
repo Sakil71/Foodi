@@ -55,7 +55,7 @@ const Navbar = () => {
                                 </div>
                                 <ul tabIndex={0} className="dropdown-content menu bg-black text-white rounded-box z-[1] w-52 p-2 shadow mt-5">
                                     <li>
-                                        <span className="flex items-center"><IoBagOutline className="text-xl"></IoBagOutline> Orders</span>
+                                        <Link to={'/myorders'} className="flex items-center"><IoBagOutline className="text-xl"></IoBagOutline> Orders</Link>
                                     </li>
                                     <li onClick={logout}>
                                         <span className="flex items-center"><AiOutlineLogout className="text-xl text-red-700"></AiOutlineLogout> Logout</span>

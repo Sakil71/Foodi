@@ -5,6 +5,8 @@ import ExploreMenu from "../components/ExploreMenu/ExploreMenu";
 import AppDownload from "../components/AppDownload/AppDownload";
 import Cart from "../pages/Cart/Cart";
 import Order from "../pages/Order/Order";
+import Verify from "../pages/Verify/Verify";
+import MyOrders from "../pages/MyOrders/MyOrders";
 
 export const router = createBrowserRouter([
     {
@@ -30,6 +32,14 @@ export const router = createBrowserRouter([
             {
                 path: '/order',
                 element: <Order></Order>
+            },
+            {
+                path: '/verify',
+                element: <Verify></Verify>
+            },
+            {
+                path: '/myorders',
+                element: <MyOrders></MyOrders>
             },
         ]
     }
